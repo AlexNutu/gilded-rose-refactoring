@@ -2,6 +2,9 @@ package com.gildedrose;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 class GildedRoseTest {
@@ -14,12 +17,12 @@ class GildedRoseTest {
         int sellInNegative = -1;
         Item elixirOfTheMongoose = new Item("Elixir of the Mongoose", sellInNegative, initialQuality);
 
-        Item[] items = new Item[]{elixirOfTheMongoose};
+        List<Item> items = Collections.singletonList(elixirOfTheMongoose);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
+        int finalQuality = items.get(0).quality;
         assertEquals(initialQuality - 2, finalQuality);
     }
 
@@ -28,12 +31,12 @@ class GildedRoseTest {
         int qualityZero = 0;
         Item elixirOfTheMongoose = new Item("Elixir of the Mongoose", 2, qualityZero);
 
-        Item[] items = new Item[]{elixirOfTheMongoose};
+        List<Item> items = Collections.singletonList(elixirOfTheMongoose);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
+        int finalQuality = items.get(0).quality;
         assertEquals(qualityZero, finalQuality);
     }
 
@@ -42,12 +45,12 @@ class GildedRoseTest {
         int qualityFifty = 50;
         Item agedBrie = new Item("Aged Brie", 2, qualityFifty);
 
-        Item[] items = new Item[]{agedBrie};
+        List<Item> items = Collections.singletonList(agedBrie);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
+        int finalQuality = items.get(0).quality;
         assertEquals(qualityFifty, finalQuality);
     }
 
@@ -56,12 +59,12 @@ class GildedRoseTest {
         int initialQuality = 20;
         Item agedBrie = new Item("Aged Brie", 2, initialQuality);
 
-        Item[] items = new Item[]{agedBrie};
+        List<Item> items = Collections.singletonList(agedBrie);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
+        int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 1, finalQuality);
     }
 
@@ -71,13 +74,13 @@ class GildedRoseTest {
         int initialSellIn = 2;
         Item sulfuras = new Item("Sulfuras, Hand of Ragnaros", initialSellIn, initialQuality);
 
-        Item[] items = new Item[]{sulfuras};
+        List<Item> items = Collections.singletonList(sulfuras);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
-        int finalSellIn = items[0].sellIn;
+        int finalQuality = items.get(0).quality;
+        int finalSellIn = items.get(0).sellIn;
         assertEquals(initialQuality, finalQuality);
         assertEquals(initialSellIn, finalSellIn);
     }
@@ -88,12 +91,12 @@ class GildedRoseTest {
         int sellIn = 10;
         Item backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialQuality);
 
-        Item[] items = new Item[]{backstagePass};
+        List<Item> items = Collections.singletonList(backstagePass);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
+        int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 2, finalQuality);
     }
 
@@ -103,12 +106,12 @@ class GildedRoseTest {
         int sellIn = 5;
         Item backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialQuality);
 
-        Item[] items = new Item[]{backstagePass};
+        List<Item> items = Collections.singletonList(backstagePass);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
+        int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 3, finalQuality);
     }
 
@@ -118,12 +121,12 @@ class GildedRoseTest {
         int sellIn = 0;
         Item backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, initialQuality);
 
-        Item[] items = new Item[]{backstagePass};
+        List<Item> items = Collections.singletonList(backstagePass);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
+        int finalQuality = items.get(0).quality;
         assertEquals(0, finalQuality);
     }
 
@@ -133,13 +136,13 @@ class GildedRoseTest {
         int initialSellIn = 2;
         Item dexterityVest = new Item("+5 Dexterity Vest", initialSellIn, initialQuality);
 
-        Item[] items = new Item[]{dexterityVest};
+        List<Item> items = Collections.singletonList(dexterityVest);
 
         app = new GildedRose(items);
         app.updateQuality();
 
-        int finalQuality = items[0].quality;
-        int finalSellIn = items[0].sellIn;
+        int finalQuality = items.get(0).quality;
+        int finalSellIn = items.get(0).sellIn;
         assertEquals(initialQuality - 1, finalQuality);
         assertEquals(initialSellIn - 1, finalSellIn);
     }
