@@ -20,7 +20,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(elixirOfTheMongoose);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(initialQuality - 2, finalQuality);
@@ -34,7 +34,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(elixirOfTheMongoose);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(qualityZero, finalQuality);
@@ -48,7 +48,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(agedBrie);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(qualityFifty, finalQuality);
@@ -62,7 +62,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(agedBrie);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 1, finalQuality);
@@ -77,7 +77,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(sulfuras);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         int finalSellIn = items.get(0).sellIn;
@@ -94,7 +94,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(backstagePass);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 2, finalQuality);
@@ -109,7 +109,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(backstagePass);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 3, finalQuality);
@@ -124,7 +124,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(backstagePass);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(0, finalQuality);
@@ -139,7 +139,7 @@ class GildedRoseTest {
         List<Item> items = Collections.singletonList(dexterityVest);
 
         app = new GildedRose(items);
-        app.updateQuality();
+        app.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         int finalSellIn = items.get(0).sellIn;
