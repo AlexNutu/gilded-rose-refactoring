@@ -131,7 +131,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void test_NormalItem_QualityAndSellInDecrease() {
+    void test_StandardItem_QualityAndSellInDecrease() {
         int initialQuality = 20;
         int initialSellIn = 2;
         Item dexterityVest = new Item("+5 Dexterity Vest", initialSellIn, initialQuality);

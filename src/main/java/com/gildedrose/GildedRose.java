@@ -2,6 +2,8 @@ package com.gildedrose;
 
 import java.util.List;
 
+import com.gildedrose.type.GildedItem;
+
 class GildedRose {
     private final List<Item> items;
 
@@ -11,8 +13,8 @@ class GildedRose {
 
     public void dailyUpdate() {
         for (final Item item : items) {
-            GildedItem gildedItem = new GildedItem(item);
-            gildedItem.updateItem(item);
+            GildedItem gildedItem = GuildedItemFactory.create(item);
+            gildedItem.updateItem();
         }
     }
 }
