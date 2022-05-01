@@ -30,40 +30,30 @@ class GildedRose {
 
     private void updateQuality(Item item, ItemType type) {
         if (type.equals(ItemType.AGED_BRIE)) {
-            updateQualityForAgedBrieAndBackstagePass(item, type);
+            increaseQuality(item);
         }
         else if (type.equals(ItemType.BACKSTAGE_PASS)) {
-            updateQualityForAgedBrieAndBackstagePass(item, type);
-        }
-        else {
-            if (item.quality > 0) {
-                if (!type.equals(ItemType.SULFURAS)) {
-                    degradeQuality(item);
-                }
-            }
-        }
-    }
-
-    private void updateQualityForAgedBrieAndBackstagePass(Item item, ItemType type) {
-        if (item.quality < 50) {
             increaseQuality(item);
 
-            if (type.equals(ItemType.BACKSTAGE_PASS)) {
-                if (item.sellIn < 11 && item.quality < 50) {
-                    increaseQuality(item);
-                }
-
-                if (item.sellIn < 6 && item.quality < 50) {
-                    increaseQuality(item);
-                }
+            if (item.sellIn < 11) {
+                increaseQuality(item);
             }
+            if (item.sellIn < 6) {
+                increaseQuality(item);
+            }
+        }
+        else if (type.equals(ItemType.SULFURAS)) {
+        }
+        else {
+            decreaseQuality(item);
         }
     }
 
     private void updateExpiration(Item item, ItemType type) {
-        if (!type.equals(ItemType.SULFURAS)) {
-            decreaseExpiry(item);
+        if (type.equals(ItemType.SULFURAS)) {
+            return;
         }
+        decreaseExpiry(item);
     }
 
     private boolean isExpired(Item item) {
@@ -71,34 +61,30 @@ class GildedRose {
     }
 
     private void handleExpired(Item item, ItemType type) {
-        if (!type.equals(ItemType.AGED_BRIE)) {
-            if (!type.equals(ItemType.BACKSTAGE_PASS)) {
-                if (item.quality > 0) {
-                    if (!type.equals(ItemType.SULFURAS)) {
-                        degradeQuality(item);
-                    }
-                }
-            }
-            else {
-                item.quality = 0;
-            }
+        if (type.equals(ItemType.AGED_BRIE)) {
+            increaseQuality(item);
         }
-        else {
-            if (item.quality < 50) {
-                increaseQuality(item);
-            }
+        else if (type.equals(ItemType.BACKSTAGE_PASS)) {
+            item.quality = 0;
+        }
+        else if (!type.equals(ItemType.SULFURAS)) {
+            decreaseQuality(item);
+        }
+    }
+
+    private void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+        }
+    }
+
+    private void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
         }
     }
 
     private void decreaseExpiry(Item item) {
         item.sellIn = item.sellIn - 1;
-    }
-
-    private void increaseQuality(Item item) {
-        item.quality = item.quality + 1;
-    }
-
-    private void degradeQuality(Item item) {
-        item.quality = item.quality - 1;
     }
 }
