@@ -67,7 +67,9 @@ class GildedRose {
         else if (type.equals(ItemType.BACKSTAGE_PASS)) {
             item.quality = 0;
         }
-        else if (!type.equals(ItemType.SULFURAS)) {
+        else if (type.equals(ItemType.SULFURAS)) {
+        }
+        else {
             decreaseQuality(item);
         }
     }
