@@ -2,10 +2,12 @@ package com.gildedrose;
 
 import static com.gildedrose.ItemType.AGED_BRIE;
 import static com.gildedrose.ItemType.BACKSTAGE_PASS;
+import static com.gildedrose.ItemType.CONJURED_MANA_CAKE;
 import static com.gildedrose.ItemType.SULFURAS;
 
 import com.gildedrose.type.AgedBrie;
 import com.gildedrose.type.BackstagePass;
+import com.gildedrose.type.Conjured;
 import com.gildedrose.type.GildedItem;
 import com.gildedrose.type.Sulfuras;
 
@@ -22,6 +24,9 @@ public class GuildedItemFactory {
         }
         if (type.equals(BACKSTAGE_PASS)) {
             return new BackstagePass(item);
+        }
+        if (type.equals(CONJURED_MANA_CAKE)) {
+            return new Conjured(item);
         }
 
         return new GildedItem(item);

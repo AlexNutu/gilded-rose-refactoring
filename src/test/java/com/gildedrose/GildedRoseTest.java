@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class GildedRoseTest {
 
-    private GildedRose app;
+    private GildedRose inventory;
 
     @Test
     void testQualityDegradesTwiceAsFastWhenDateHasPassed() {
@@ -19,8 +19,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(elixirOfTheMongoose);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(initialQuality - 2, finalQuality);
@@ -33,8 +33,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(elixirOfTheMongoose);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(qualityZero, finalQuality);
@@ -47,8 +47,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(agedBrie);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(qualityFifty, finalQuality);
@@ -61,8 +61,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(agedBrie);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 1, finalQuality);
@@ -76,8 +76,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(sulfuras);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         int finalSellIn = items.get(0).sellIn;
@@ -93,8 +93,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(backstagePass);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 2, finalQuality);
@@ -108,8 +108,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(backstagePass);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(initialQuality + 3, finalQuality);
@@ -123,8 +123,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(backstagePass);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         assertEquals(0, finalQuality);
@@ -138,8 +138,8 @@ class GildedRoseTest {
 
         List<Item> items = Collections.singletonList(dexterityVest);
 
-        app = new GildedRose(items);
-        app.dailyUpdate();
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
 
         int finalQuality = items.get(0).quality;
         int finalSellIn = items.get(0).sellIn;
@@ -149,6 +149,16 @@ class GildedRoseTest {
 
     @Test
     void test_ConjuredItem_QualityDecreasesTwiceAsFast() {
-        // TODO:
+        int initialQuality = 20;
+        int initialSellIn = 10;
+        Item dexterityVest = new Item("Conjured Mana Cake", initialSellIn, initialQuality);
+
+        List<Item> items = Collections.singletonList(dexterityVest);
+
+        inventory = new GildedRose(items);
+        inventory.dailyUpdate();
+
+        int finalQuality = items.get(0).quality;
+        assertEquals(initialQuality - 2, finalQuality);
     }
 }
